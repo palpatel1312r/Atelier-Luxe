@@ -5,7 +5,7 @@
 // and PLACEHOLDER is declared *before* resolveImageUrl uses it.
 
 const API_BASE =
-  (import.meta as any)?.env?.VITE_API_URL ?? 'http://127.0.0.1:8000';
+  (import.meta as any)?.env?.VITE_API_URL ?? "https://ataliarluxe.netlify.app/";
 
 /**
  * Inline SVG garment silhouette used when there's no image or the image fails

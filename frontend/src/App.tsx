@@ -452,7 +452,7 @@ function ShopPage({
         <div className="text-center py-16 text-red-600">
           Failed to load products: {error}
           <p className="text-sm text-stone-500 mt-2">
-            Make sure the Laravel backend is running on http://127.0.0.1:8000
+            Make sure the Laravel backend is running on https://ataliarluxe.netlify.app/
           </p>
         </div>
       )}
