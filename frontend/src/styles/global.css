@@ -1,0 +1,179 @@
+/* ==========================================================================
+   DESIGN SYSTEM — "The Ledger"
+   ==========================================================================
+   Grounded in the actual subject: a wholesale trading app dealers check on
+   their phone, mid-transaction, to read today's rate and stock before
+   calling in an order. Every list in this app (products, cart, orders,
+   admin tables) is styled as a ledger row — hairline dividers, right-aligned
+   tabular figures, a price treated like a price-tag stub (MRP struck through
+   above, the real number large below). That one idea carries through the
+   whole app instead of decoration bolted onto a generic card grid.
+
+   Fraunces  → headings & prices only (restrained, not on every label)
+   Inter     → all UI text/body copy
+   IBM Plex Mono → SKUs, order numbers, barcodes, tabular data — genuinely
+                   how these read on a real invoice, not a stylistic whim.
+   ========================================================================== */
+
+/* Wholesale Studio / Design System v2 — see DESIGN_SYSTEM.md */
+:root {
+  --navy: #102A56;
+  --blue: #2359D1;
+  --blue-deep: #1946A6;
+  --blue-wash: #EAF1FF;
+  --teal: #008C83;
+  --teal-deep: #006D68;
+  --teal-wash: #E8F8F5;
+  --coral: #F46D4F;
+  --coral-wash: #FFF0EB;
+
+  --ink: #142B49;
+  --ink-soft: #63758F;
+  --paper: #F5F8FD;
+  --paper-raised: #FFFFFF;
+  --rule: #E1E8F2;
+  --rule-soft: #EDF1F7;
+
+  /* Legacy component aliases, retained for backwards compatibility */
+  --brass: var(--teal);
+  --brass-deep: var(--teal-deep);
+  --brass-wash: var(--teal-wash);
+  --ledger-green: #087F63;
+  --ledger-green-wash: #E6F6EF;
+  --amber: #A96A10;
+  --amber-wash: #FFF4E4;
+  --rust: #CF4B48;
+  --rust-wash: #FCECED;
+
+  --font-display: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-base: 14px;
+  --text-md: 16px;
+  --text-lg: 20px;
+  --text-xl: 27px;
+  --text-2xl: 35px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-8: 48px;
+
+  --radius-sm: 9px;
+  --radius-md: 13px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+  --shadow-card: 0 2px 5px rgba(21,45,84,.025), 0 16px 35px -22px rgba(16,42,86,.15);
+  --shadow-raised: 0 12px 42px -14px rgba(16,42,86,.20);
+  --shadow-sheet: 0 -18px 48px rgba(16,42,86,.17);
+  --header-height: 76px;
+  --footer-height: 60px;
+  --motion-fast: 160ms cubic-bezier(.2,.8,.2,1);
+  --motion-base: 240ms cubic-bezier(.2,.8,.2,1);
+
+  --color-primary: var(--blue);
+  --color-primary-dark: var(--blue-deep);
+  --color-success: var(--ledger-green);
+  --color-warning: var(--amber);
+  --color-danger: var(--rust);
+  --color-bg: var(--paper);
+  --color-surface: var(--paper-raised);
+  --color-border: var(--rule);
+  --color-text: var(--ink);
+  --color-text-muted: var(--ink-soft);
+  --radius: var(--radius-md);
+  --font-family: var(--font-body);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #root { height: 100%; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: var(--text-base);
+  line-height: 1.5;
+  overscroll-behavior-y: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { font-family: var(--font-display); color: var(--ink); font-weight: 700; letter-spacing: -0.01em; }
+
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+input, select, textarea { font-family: inherit; font-size: var(--text-base); color: var(--ink); }
+button, a, input, select { min-height: 40px; }
+
+/* Tabular/mono treatment for anything money- or code-like — apply this
+   class wherever a price, quantity, SKU, or order number is rendered. */
+.tabular { font-family: var(--font-mono); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+
+/* Visible keyboard focus everywhere — accessibility floor, not optional */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+.container { width: 100%; max-width: 1440px; margin: 0 auto; padding: 0 16px; }
+
+@media (min-width: 768px) {
+  body { font-size: 15px; }
+}
+
+/* ---- Shared primitives reused across pages ---- */
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 14px; border-radius: var(--radius-pill);
+  font-size: var(--text-sm); font-weight: 600; color: var(--ink-soft);
+  background: var(--paper-raised); border: 1px solid var(--rule);
+  white-space: nowrap; transition: all var(--motion-fast);
+}
+.chip--active { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+
+.status-dot { display: inline-flex; align-items: center; gap: 6px; font-size: var(--text-xs); font-weight: 600; }
+.status-dot::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: currentColor; box-shadow: 0 0 0 3px currentColor; opacity: 0.9; }
+.status-dot--in { color: var(--ledger-green); }
+.status-dot--low { color: var(--amber); }
+.status-dot--out { color: var(--rust); }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 12px 20px; border-radius: var(--radius-md);
+  font-weight: 600; font-size: var(--text-base);
+  transition: transform var(--motion-fast), box-shadow var(--motion-fast), background var(--motion-fast);
+}
+.btn:active { transform: scale(0.97); }
+.btn--primary { background: var(--ink); color: var(--paper); }
+.btn--primary:hover { background: #24405e; }
+.btn--brass { background: var(--brass); color: #fff; box-shadow: var(--shadow-card); }
+.btn--brass:hover { background: var(--brass-deep); }
+.btn--outline { background: var(--paper-raised); border: 1.5px solid var(--rule); color: var(--ink); }
+.btn--outline:hover { border-color: var(--ink); }
+.btn--danger { background: var(--rust); color: #fff; }
+.btn:disabled { opacity: 0.5; pointer-events: none; }
+
+.card-surface {
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.ledger-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: var(--space-3) 0; border-bottom: 1px solid var(--rule-soft);
+}
+.ledger-row:last-child { border-bottom: none; }

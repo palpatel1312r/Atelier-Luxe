@@ -1,0 +1,1 @@
+export { useCartCount } from "../context/CartContext";

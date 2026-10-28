@@ -1,0 +1,259 @@
+/* ============================================================
+   BUYER ATMOSPHERE
+   Theme-aware depth and motion for customer-facing pages only.
+   ============================================================ */
+
+/* Each palette owns a four-color aurora. These stops are intentionally more
+   visible than the old near-white canvas and stay coordinated with the
+   active theme. */
+:root,
+:root[data-trade-theme="cobalt"] {
+    --buyer-color-a: #8edcff;
+    --buyer-color-b: #aaa0ff;
+    --buyer-color-c: #ff9fbe;
+    --buyer-color-d: #75e7d2;
+}
+
+:root[data-trade-theme="sapphire"] {
+    --buyer-color-a: #93c5fd;
+    --buyer-color-b: #a5a4ff;
+    --buyer-color-c: #e6a8ff;
+    --buyer-color-d: #79dff2;
+}
+
+:root[data-trade-theme="emerald"] {
+    --buyer-color-a: #78e1aa;
+    --buyer-color-b: #67ddd1;
+    --buyer-color-c: #f6d879;
+    --buyer-color-d: #8cc8ff;
+}
+
+:root[data-trade-theme="teal"] {
+    --buyer-color-a: #68dfec;
+    --buyer-color-b: #71e5c6;
+    --buyer-color-c: #bba6ff;
+    --buyer-color-d: #f4a8cf;
+}
+
+:root[data-trade-theme="sunset"] {
+    --buyer-color-a: #ffb479;
+    --buyer-color-b: #ff938b;
+    --buyer-color-c: #f7d45f;
+    --buyer-color-d: #c3a9ff;
+}
+
+:root[data-trade-theme="daylight"] {
+    --buyer-color-a: #8ddcff;
+    --buyer-color-b: #c1adff;
+    --buyer-color-c: #ffacbd;
+    --buyer-color-d: #80e6d2;
+}
+
+:root[data-trade-theme="graphite"] {
+    --buyer-color-a: #9fb7cc;
+    --buyer-color-b: #8ebcff;
+    --buyer-color-c: #c5a9e8;
+    --buyer-color-d: #e6aab3;
+}
+
+:root[data-trade-theme="violet"] {
+    --buyer-color-a: #b6a2ff;
+    --buyer-color-b: #e5a4ed;
+    --buyer-color-c: #ff9fc1;
+    --buyer-color-d: #8fd9ff;
+}
+
+:root[data-trade-theme] .app-layout.studio-site {
+    --buyer-dot-primary: color-mix(
+        in srgb,
+        var(--tm-primary) 34%,
+        transparent
+    );
+    --buyer-primary-glow: color-mix(
+        in srgb,
+        var(--buyer-color-a) 62%,
+        transparent
+    );
+    --buyer-accent-glow: color-mix(
+        in srgb,
+        var(--buyer-color-c) 60%,
+        transparent
+    );
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
+    background:
+        radial-gradient(
+            ellipse at 5% 4%,
+            color-mix(in srgb, var(--buyer-color-a) 72%, transparent),
+            transparent 38rem
+        ),
+        radial-gradient(
+            ellipse at 95% 6%,
+            color-mix(in srgb, var(--buyer-color-c) 68%, transparent),
+            transparent 36rem
+        ),
+        radial-gradient(
+            ellipse at 72% 96%,
+            color-mix(in srgb, var(--buyer-color-d) 58%, transparent),
+            transparent 42rem
+        ),
+        linear-gradient(
+            135deg,
+            color-mix(in srgb, var(--buyer-color-a) 54%, #eef7ff) 0%,
+            color-mix(in srgb, var(--buyer-color-b) 52%, #f2efff) 38%,
+            color-mix(in srgb, var(--buyer-color-c) 48%, #fff1f5) 70%,
+            color-mix(in srgb, var(--buyer-color-d) 48%, #effffb) 100%
+        ) !important;
+    background-attachment: fixed !important;
+}
+
+/* Historical themes paint the inner column with an opaque solid color. Let
+   the new canvas remain visible through every buyer route. */
+:root[data-trade-theme] .app-layout.studio-site .studio-site__shell,
+:root[data-trade-theme] .app-layout.studio-site .studio-site__column {
+    background: transparent !important;
+}
+
+:root[data-trade-theme] .app-layout.studio-site .studio-site__shell {
+    position: relative;
+    z-index: 1;
+}
+
+/* A tech-dot field references the geometric sample without using the source
+   artwork. It is concentrated in the upper-right so content stays clear. */
+:root[data-trade-theme] .app-layout.studio-site::before {
+    content: "";
+    position: fixed;
+    z-index: 0;
+    inset: 72px 0 0;
+    pointer-events: none;
+    background-image:
+        radial-gradient(
+            circle,
+            var(--buyer-dot-primary) 0 4px,
+            transparent 4.8px
+        ),
+        radial-gradient(
+            circle,
+            color-mix(in srgb, var(--tm-accent) 30%, transparent) 0 3px,
+            transparent 3.8px
+        ),
+        linear-gradient(
+            135deg,
+            transparent 43%,
+            color-mix(in srgb, var(--buyer-color-b) 22%, transparent) 44% 51%,
+            transparent 52%
+        );
+    background-size: 46px 46px, 46px 46px, 230px 230px;
+    background-position: 0 0, 23px 23px, 100% 0;
+    mask-image: radial-gradient(
+        ellipse 68% 44% at 91% 0%,
+        #000 5%,
+        rgba(0, 0, 0, 0.82) 38%,
+        transparent 78%
+    );
+    opacity: 0.88;
+}
+
+/* Large ambient color fields create depth without adding distracting UI
+   objects. Only transforms animate, keeping the effect smooth. */
+:root[data-trade-theme] .app-layout.studio-site::after {
+    content: "";
+    position: fixed;
+    z-index: 0;
+    inset: 36px -7vw -10vh;
+    pointer-events: none;
+    background:
+        radial-gradient(
+            circle at 86% 18%,
+            var(--buyer-accent-glow),
+            transparent 24rem
+        ),
+        radial-gradient(
+            circle at 12% 55%,
+            var(--buyer-primary-glow),
+            transparent 30rem
+        ),
+        radial-gradient(
+            circle at 65% 92%,
+            color-mix(in srgb, var(--buyer-color-d) 48%, transparent),
+            transparent 26rem
+        );
+    opacity: 0.84;
+    will-change: transform;
+    animation: buyerAtmosphereDrift 18s ease-in-out infinite alternate;
+}
+
+/* Frosted chrome lets the background carry through the shell rather than
+   ending abruptly beneath solid utility strips. */
+:root[data-trade-theme]
+    .app-layout.studio-site
+    .studio-site__subhead {
+    background: color-mix(
+        in srgb,
+        var(--tm-header-bg) 86%,
+        transparent
+    ) !important;
+    border-color: color-mix(
+        in srgb,
+        var(--tm-primary) 16%,
+        transparent
+    ) !important;
+    box-shadow: 0 12px 34px -30px
+        color-mix(in srgb, var(--tm-deep) 46%, transparent);
+    backdrop-filter: blur(18px) saturate(125%);
+    -webkit-backdrop-filter: blur(18px) saturate(125%);
+}
+
+:root[data-trade-theme]
+    .app-layout.studio-site
+    .studio-site__assurance {
+    background: color-mix(
+        in srgb,
+        var(--tm-bg-elevated) 86%,
+        transparent
+    ) !important;
+    border-color: var(--tm-line) !important;
+    box-shadow: 0 16px 42px -38px
+        color-mix(in srgb, var(--tm-deep) 48%, transparent);
+    backdrop-filter: blur(16px) saturate(120%);
+    -webkit-backdrop-filter: blur(16px) saturate(120%);
+}
+
+@keyframes buyerAtmosphereDrift {
+    0% {
+        transform: translate3d(-1.25%, -0.75%, 0) scale(1);
+    }
+    50% {
+        transform: translate3d(1.5%, 1%, 0) scale(1.025);
+    }
+    100% {
+        transform: translate3d(-0.5%, 1.5%, 0) scale(1.012);
+    }
+}
+
+@media (max-width: 767px) {
+    :root[data-trade-theme] .app-layout.studio-site::before {
+        background-size: 36px 36px, 36px 36px, 180px 180px;
+        background-position: 0 0, 18px 18px, 100% 0;
+        opacity: 0.58;
+    }
+
+    :root[data-trade-theme] .app-layout.studio-site::after {
+        inset-inline: -20vw;
+        opacity: 0.58;
+    }
+}
+
+[data-motion-level="calm"] .app-layout.studio-site::after {
+    animation: none;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :root[data-trade-theme] .app-layout.studio-site::after {
+        animation: none;
+        transform: none;
+    }
+}

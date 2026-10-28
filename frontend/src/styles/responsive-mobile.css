@@ -1,0 +1,82 @@
+/* Mobile / tablet / WebView */
+html { -webkit-text-size-adjust: 100%; }
+body { overflow-x: hidden; min-height: 100dvh; }
+
+/* Product search lives in the desktop header or the mobile subhead. */
+.studio-site__subhead .product-search--subhead {
+  display: none;
+}
+
+.product-list-page .product-list-page__toolbar {
+  justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  .app-header .app-header__search-wrapper {
+    display: none;
+  }
+  .studio-site__subhead {
+    flex-wrap: wrap;
+  }
+  .studio-site__subhead .enterprise-global-tools {
+    width: 100%;
+  }
+  .studio-site__subhead .product-search--subhead {
+    display: block;
+    flex: 1 1 0;
+    min-width: 0;
+  }
+}
+
+/* Match the desktop selector so results fill the row when its sidebar is hidden. */
+@media (max-width: 800px) {
+  .product-list-page .arc-market-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  button, a.btn, .product-detail__btn, .studio-sidebar__link, .mobile-nav__item {
+    min-height: 44px;
+  }
+  input, select, textarea { font-size: 16px !important; }
+  .product-grid, .studio-product-grid, .product-similar__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+  .studio-site__main, .app-layout__content {
+    padding: 14px 12px calc(88px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  .trade-footer.site-footer--desktop, .site-footer--desktop { display: none !important; }
+  .app-header { padding-inline: 10px !important; }
+  .studio-site__subhead { flex-wrap: wrap; gap: 8px; padding: 10px 12px !important; }
+  .product-detail { display: flex !important; flex-direction: column !important; }
+  .product-detail__sticky-bar {
+    bottom: calc(64px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .product-list-page .product-list-page__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 9px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .product-grid, .studio-product-grid, .product-similar__grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 960px) {
+  .studio-site__shell { grid-template-columns: 1fr !important; }
+}
+
+.mobile-nav, .dock {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+}
+
+img, video, svg { max-width: 100%; height: auto; }

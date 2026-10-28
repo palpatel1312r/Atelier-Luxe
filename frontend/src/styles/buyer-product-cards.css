@@ -1,0 +1,380 @@
+/* ============================================================
+   BUYER PRODUCT CARDS
+   Calm, theme-aware cards for the colorful buyer canvas.
+   ============================================================ */
+
+:root[data-trade-theme] .studio-site .studio-product {
+    --product-card-accent: var(--buyer-color-a);
+    --product-card-surface: color-mix(
+        in srgb,
+        var(--product-card-accent) 8%,
+        #fbfaf7
+    );
+    --product-card-surface-2: color-mix(
+        in srgb,
+        var(--tm-primary) 7%,
+        #f4f6f8
+    );
+    --product-card-ink: color-mix(in srgb, var(--tm-deep) 82%, #172238);
+    --product-card-line: color-mix(
+        in srgb,
+        var(--product-card-accent) 26%,
+        transparent
+    );
+}
+
+:root[data-trade-theme] .studio-site .studio-product:nth-child(4n + 2) {
+    --product-card-accent: var(--buyer-color-b);
+}
+
+:root[data-trade-theme] .studio-site .studio-product:nth-child(4n + 3) {
+    --product-card-accent: var(--buyer-color-c);
+}
+
+:root[data-trade-theme] .studio-site .studio-product:nth-child(4n) {
+    --product-card-accent: var(--buyer-color-d);
+}
+
+:root[data-trade-theme]
+    .studio-site.trade-v12
+    .studio-product.experience-product.product-card {
+    background: var(--product-card-surface) !important;
+    border: 1px solid
+        color-mix(in srgb, var(--product-card-accent) 34%, #ffffff) !important;
+    border-radius: 23px !important;
+    box-shadow:
+        0 18px 44px -28px
+            color-mix(in srgb, var(--tm-deep) 42%, transparent),
+        0 7px 18px -15px
+            color-mix(in srgb, var(--product-card-accent) 40%, transparent),
+        inset 0 1px 0 rgba(255, 255, 255, 0.82) !important;
+}
+
+/* Slim edition stripe gives every card a distinct theme-colored identity. */
+:root[data-trade-theme]
+    .studio-site.trade-v12
+    .studio-product.experience-product.product-card::after {
+    content: "";
+    position: absolute;
+    z-index: 8;
+    inset: 0 22px auto;
+    height: 2px;
+    border-radius: 0 0 999px 999px;
+    pointer-events: none;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--product-card-accent) 22%,
+        var(--tm-accent) 78%,
+        transparent
+    );
+    opacity: 0.7;
+}
+
+:root[data-trade-theme]
+    .studio-site.trade-v12
+    .studio-product.experience-product.product-card::before {
+    background: radial-gradient(
+        390px circle at var(--spot-x, 50%) var(--spot-y, 35%),
+        color-mix(in srgb, var(--product-card-accent) 13%, transparent),
+        transparent 46%
+    );
+    box-shadow: inset 0 0 0 1px
+        color-mix(in srgb, var(--product-card-accent) 24%, transparent);
+}
+
+/* Product photography sits on a luminous tinted stage rather than another
+   white rectangle. */
+:root[data-trade-theme]
+    .studio-site.trade-v12
+    .studio-product
+    .studio-product__media {
+    background:
+        radial-gradient(
+            circle at 24% 18%,
+            rgba(255, 255, 255, 0.92),
+            transparent 34%
+        ),
+        linear-gradient(
+            145deg,
+            color-mix(in srgb, var(--product-card-accent) 13%, #fbfcff),
+            color-mix(in srgb, var(--product-card-accent) 24%, #eef2f7)
+        ) !important;
+    border-bottom: 1px solid var(--product-card-line);
+}
+
+:root[data-trade-theme]
+    .studio-site.trade-v12
+    .studio-product
+    .studio-product__serial {
+    background: rgba(255, 255, 255, 0.84) !important;
+    color: var(--tm-ink-soft) !important;
+    border: 1px solid rgba(255, 255, 255, 0.76) !important;
+    box-shadow: 0 8px 22px rgba(41, 55, 86, 0.1);
+    backdrop-filter: blur(12px) saturate(130%);
+    -webkit-backdrop-filter: blur(12px) saturate(130%);
+}
+
+:root[data-trade-theme]
+    .studio-site.trade-v12
+    .studio-product
+    .studio-product__offer {
+    background: var(--product-card-accent) !important;
+    color: var(--product-card-ink) !important;
+    box-shadow: 0 8px 20px
+        color-mix(in srgb, var(--product-card-accent) 38%, transparent);
+}
+
+/* Warm pearl information deck: distinct from the page without creating the
+   hard contrast of a dark dashboard card. */
+:root[data-trade-theme]
+    .studio-site.trade-v12
+    .studio-product
+    .studio-product__body,
+:root[data-trade-theme]
+    .studio-site.trade-v12
+    .studio-product:hover
+    .studio-product__body {
+    background:
+        radial-gradient(
+            circle at 108% -12%,
+            color-mix(in srgb, var(--product-card-accent) 15%, transparent),
+            transparent 48%
+        ),
+        linear-gradient(
+            155deg,
+            var(--product-card-surface),
+            var(--product-card-surface-2)
+        ) !important;
+    color: var(--product-card-ink) !important;
+}
+
+:root[data-trade-theme]
+    .studio-site.trade-v12
+    .studio-product
+    .studio-product__meta {
+    color: var(--tm-muted) !important;
+}
+
+:root[data-trade-theme]
+    .studio-site.trade-v12
+    .studio-product
+    h3
+    a,
+:root[data-trade-theme]
+    .studio-site.trade-v12
+    .studio-product:hover
+    h3
+    a {
+    color: var(--product-card-ink) !important;
+}
+
+:root[data-trade-theme]
+    .studio-site.trade-v12
+    .studio-product
+    h3
+    a:hover {
+    color: var(--tm-primary) !important;
+}
+
+:root[data-trade-theme]
+    .studio-site.trade-v12
+    .studio-product
+    .studio-product__detail
+    span,
+:root[data-trade-theme]
+    .studio-site.trade-v12
+    .studio-product:hover
+    .studio-product__detail
+    span {
+    background: color-mix(
+        in srgb,
+        var(--product-card-accent) 12%,
+        rgba(255, 255, 255, 0.78)
+    ) !important;
+    color: var(--tm-ink-soft) !important;
+    border: 1px solid
+        color-mix(in srgb, var(--product-card-accent) 20%, transparent) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.62);
+}
+
+:root[data-trade-theme]
+    .studio-site.trade-v12
+    .studio-product
+    .studio-product__detail
+    b {
+    color: var(--product-card-ink) !important;
+}
+
+:root[data-trade-theme]
+    .studio-site.trade-v12
+    .studio-product
+    .studio-product__bottom {
+    border-top-color: color-mix(
+        in srgb,
+        var(--tm-primary) 15%,
+        #d9e0ea
+    ) !important;
+}
+
+:root[data-trade-theme]
+    .studio-site.trade-v12
+    .studio-product
+    .studio-product__price
+    small {
+    color: var(--tm-muted) !important;
+}
+
+:root[data-trade-theme]
+    .studio-site.trade-v12
+    .studio-product
+    .studio-product__price
+    strong,
+:root[data-trade-theme]
+    .studio-site.trade-v12
+    .studio-product:hover
+    .studio-product__price
+    strong {
+    color: var(--tm-primary) !important;
+    text-shadow: none;
+}
+
+:root[data-trade-theme]
+    .studio-site.trade-v12
+    .studio-product
+    .studio-product__price
+    del {
+    color: var(--tm-muted) !important;
+}
+
+:root[data-trade-theme]
+    .studio-site.trade-v12
+    .studio-product
+    .studio-product__go {
+    background: linear-gradient(
+        140deg,
+        var(--tm-primary),
+        color-mix(in srgb, var(--product-card-accent) 72%, var(--tm-primary))
+    ) !important;
+    border: 1px solid rgba(255, 255, 255, 0.26) !important;
+    box-shadow: 0 11px 24px -11px
+        color-mix(in srgb, var(--product-card-accent) 80%, transparent);
+}
+
+:root[data-trade-theme]
+    .studio-site.trade-v12
+    .studio-product
+    .studio-product__stock {
+    color: var(--tm-muted) !important;
+}
+
+:root[data-trade-theme]
+    .studio-site.trade-v12
+    .studio-product
+    .studio-product__stock--in_stock {
+    color: #16836b !important;
+}
+
+:root[data-trade-theme]
+    .studio-site.trade-v12
+    .studio-product
+    .studio-product__stock--low_stock {
+    color: #b66b11 !important;
+}
+
+:root[data-trade-theme]
+    .studio-site.trade-v12
+    .studio-product
+    .studio-product__stock--out_of_stock {
+    color: #c43f55 !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    :root[data-trade-theme]
+        .studio-site.trade-v12
+        .studio-product.experience-product.product-card:hover,
+    :root[data-trade-theme]
+        .studio-site.trade-v12
+        .studio-product.experience-product.product-card:focus-within {
+        border-color: var(--product-card-accent) !important;
+        box-shadow:
+            -8px 12px 0 -5px
+                color-mix(in srgb, var(--product-card-accent) 22%, transparent),
+            0 28px 54px -30px
+                color-mix(in srgb, var(--tm-deep) 48%, transparent),
+            inset 0 1px 0 rgba(255, 255, 255, 0.84) !important;
+    }
+}
+
+/* Wishlist owns an outer shell for the remove action; keep that shell in the
+   same calm pearl family. */
+:root[data-trade-theme] .studio-site .wishlist-item {
+    background: linear-gradient(
+        155deg,
+        color-mix(in srgb, var(--tm-primary) 5%, #fbfaf7),
+        color-mix(in srgb, var(--tm-accent) 7%, #f3f5f7)
+    ) !important;
+    border-color: color-mix(
+        in srgb,
+        var(--tm-primary) 22%,
+        rgba(255, 255, 255, 0.72)
+    ) !important;
+    box-shadow: 0 20px 44px -30px
+        color-mix(in srgb, var(--tm-deep) 46%, transparent) !important;
+}
+
+:root[data-trade-theme] .studio-site .wishlist-item__remove {
+    background: rgba(255, 255, 255, 0.64) !important;
+    color: #c43f55 !important;
+    border-color: rgba(225, 29, 72, 0.42) !important;
+}
+
+:root[data-trade-theme] .studio-site.trade-v12 .order-history__list > .order-card {
+    --order-card-accent: var(--buyer-color-a);
+    background: linear-gradient(
+        145deg,
+        color-mix(in srgb, var(--order-card-accent) 15%, #fbfcff),
+        color-mix(in srgb, var(--tm-accent) 10%, #f5f7fc)
+    ) !important;
+    border-color: color-mix(
+        in srgb,
+        var(--order-card-accent) 34%,
+        #ffffff
+    ) !important;
+    box-shadow:
+        0 18px 44px -28px color-mix(in srgb, var(--tm-deep) 42%, transparent),
+        inset 0 1px 0 rgba(255, 255, 255, 0.82) !important;
+}
+
+:root[data-trade-theme] .studio-site.trade-v12 .order-history__list > .order-card:nth-child(3n + 2) {
+    --order-card-accent: var(--buyer-color-b);
+}
+
+:root[data-trade-theme] .studio-site.trade-v12 .order-history__list > .order-card:nth-child(3n) {
+    --order-card-accent: var(--buyer-color-c);
+}
+
+@media (hover: hover) {
+    :root[data-trade-theme]
+        .studio-site
+        .wishlist-item__remove:hover:not(:disabled) {
+        background: #e11d48 !important;
+        color: #ffffff !important;
+        border-color: #fb7185 !important;
+    }
+}
+
+@media (max-width: 767px) {
+    :root[data-trade-theme]
+        .studio-site.trade-v12
+        .studio-product.experience-product.product-card {
+        border-radius: 18px !important;
+    }
+
+    :root[data-trade-theme]
+        .studio-site.trade-v12
+        .studio-product
+        .studio-product__body {
+        padding: 13px !important;
+    }
+}

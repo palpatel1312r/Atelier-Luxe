@@ -1,0 +1,6 @@
+.app-layout { min-height: 100vh; display: flex; flex-direction: column; background: var(--paper); }
+.app-layout__content {
+  flex: 1; padding: var(--space-3) var(--space-4);
+  padding-bottom: calc(var(--footer-height) + var(--space-4));
+  max-width: 1200px; width: 100%; margin: 0 auto;
+}

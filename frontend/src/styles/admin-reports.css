@@ -1,0 +1,3 @@
+/* Chart-specific tweaks that don't belong in the generic admin-common.css */
+.recharts-cartesian-axis-tick text { font-family: var(--font-body); }
+.recharts-default-tooltip { font-family: var(--font-body) !important; }

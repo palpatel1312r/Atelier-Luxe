@@ -1,0 +1,250 @@
+/* ========== DESKTOP FOOTER ========== */
+.site-footer {
+    background: var(--paper-raised, #fff);
+    border-top: 1px solid var(--rule, #dadfd6);
+    margin-top: auto;
+}
+
+.site-footer--desktop {
+    display: none;
+}
+
+.site-footer__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px 28px;
+    display: grid;
+    grid-template-columns: 1.2fr 2fr;
+    gap: 40px;
+}
+
+.site-footer__brand {
+    max-width: 260px;
+}
+
+.site-footer__logo-text {
+    font-family: var(--font-display, inherit);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink, #1a2b3c);
+    letter-spacing: -0.02em;
+}
+
+.site-footer__tagline {
+    margin-top: 8px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-soft, #4a5b70);
+}
+
+.site-footer__cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.site-footer__heading {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-soft, #4a5b70);
+    margin-bottom: 14px;
+}
+
+.site-footer__col a {
+    display: block;
+    font-size: 14px;
+    color: var(--ink, #1a2b3c);
+    text-decoration: none;
+    padding: 5px 0;
+    transition: color 0.15s ease;
+}
+
+.site-footer__col a:hover {
+    color: var(--brass, #c08a1e);
+}
+
+.site-footer__bottom {
+    border-top: 1px solid var(--rule-soft, #e8ebe4);
+    padding: 14px 24px;
+    text-align: center;
+}
+
+.site-footer__bottom p {
+    font-size: 12px;
+    color: var(--ink-soft, #4a5b70);
+    margin: 0;
+}
+
+/* Simple footer (admin / guest) */
+.site-footer--simple {
+    display: block;
+}
+
+.site-footer__inner--simple {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+    grid-template-columns: none;
+}
+
+.site-footer__copy {
+    font-size: 12px;
+    color: var(--ink-soft, #4a5b70);
+    margin: 0;
+}
+
+.site-footer__simple-links {
+    display: flex;
+    gap: 20px;
+}
+
+.site-footer__simple-links a {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink-soft, #4a5b70);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.site-footer__simple-links a:hover {
+    color: var(--ink, #1a2b3c);
+}
+
+/* ========== MOBILE BOTTOM NAV ========== */
+.mobile-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    height: 64px;
+    padding-bottom: env(safe-area-inset-bottom);
+    background: var(--paper-raised, #fff);
+    border-top: 1px solid var(--rule, #dadfd6);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.mobile-nav__item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    text-decoration: none;
+    color: var(--ink-soft, #4a5b70);
+    transition: color 0.15s ease;
+    min-width: 0;
+}
+
+.mobile-nav__item:active {
+    transform: scale(0.96);
+}
+
+.mobile-nav__item--active {
+    color: var(--brass, #c08a1e);
+}
+
+.mobile-nav__icon {
+    font-size: 20px;
+    line-height: 1;
+}
+
+.mobile-nav__icon-wrap {
+    position: relative;
+    display: inline-flex;
+}
+
+.mobile-nav__label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    padding: 0 2px;
+}
+
+.mobile-nav__badge {
+    position: absolute;
+    top: -6px;
+    right: -10px;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    border-radius: 8px;
+    background: var(--rust, #b3401f);
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    font-family: var(--font-mono, monospace);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--paper-raised, #fff);
+}
+
+/* Cart center emphasis (optional) */
+.mobile-nav__item--cart .mobile-nav__icon {
+    font-size: 22px;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (min-width: 768px) {
+    .mobile-nav {
+        display: none;
+    }
+
+    .site-footer--desktop {
+        display: block;
+    }
+
+    /* Body padding: only need bottom space on mobile for fixed nav */
+}
+
+@media (max-width: 767px) {
+    .site-footer--desktop {
+        display: none;
+    }
+
+    .site-footer--simple {
+        display: none; /* dealers use mobile nav; admin can keep simple if needed */
+    }
+
+    /* Space so content isn’t hidden behind fixed nav */
+    body {
+        padding-bottom: calc(64px + env(safe-area-inset-bottom));
+    }
+}
+
+@media (max-width: 640px) {
+    .site-footer__inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 28px 16px 20px;
+    }
+
+    .site-footer__cols {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 900px) {
+    .site-footer__inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .site-footer__cols {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
